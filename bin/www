@@ -4,6 +4,7 @@
    * Module dependencies.
    */
 
+  const {ip, port} = require('config/app')
   const debugApiV1 = require('debug')('express-template:api-v1')
   const debug = require('debug')('express-template:server')
   const http = require('http')
@@ -14,8 +15,8 @@
    * Get port from environment and store in Express.
    */
 
-  const port = normalizePort(process.env.PORT || '3000')
   app.set('port', port)
+  app.set('ip', ip)
 
   /**
    * Create HTTP server.
@@ -27,7 +28,7 @@
    * Listen on provided port, on all network interfaces.
    */
 
-  server.listen(port)
+  server.listen(port, ip)
   server.on('error', onError)
   server.on('listening', onListening)
 
