@@ -5,10 +5,8 @@
    */
 
   const {ip, port} = require('config/app')
-  const debugApiV1 = require('debug')('express-template:api-v1')
-  const debug = require('debug')('express-template:server')
   const http = require('http')
-  const app = await require('apps')({debug: debugApiV1})
+  const app = await require('apps')({})
 
 
   /**
@@ -36,7 +34,7 @@
    * Normalize a port into a number, string, or false.
    */
 
-  function normalizePort(val) {
+  function normalizePort(val: any) {
     const port = parseInt(val, 10)
 
     if (isNaN(port)) {
@@ -56,7 +54,7 @@
    * Event listener for HTTP server "error" event.
    */
 
-  function onError(error) {
+  function onError(error: any) {
     if (error.syscall !== 'listen') {
       throw error
     }
@@ -89,6 +87,6 @@
     const bind = typeof addr === 'string'
       ? 'pipe ' + addr
       : 'port ' + addr.port
-    debug('Listening on ' + bind)
+    console.log('Listening on ' + bind)
   }
 })()
